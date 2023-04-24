@@ -24,7 +24,12 @@ const Screen1 = ({ inputValue, handleInputChanges }) => {
   return (
     <div className="screenOne">
       <div className="screenOne__header">
-        <h1 className="screenOne__header--title">Remove Duplicate Character</h1>
+        <h1 className="screenOne__header--title">
+          HouseWare Octernship Project
+        </h1>
+        <h2 className="screenOne__header--subtitle">
+          Duplicate character remover
+        </h2>
       </div>
       <div className="screenOne__container">
         <input
