@@ -14,6 +14,7 @@ const Screen1 = ({ inputValue, setInputValue, handleInputChanges }) => {
     []
   );
 
+  // 
   const handleSubmit = () => {
     // Trim the inputValue to remove whitespace
     const trimmedValue = inputValue.trim();

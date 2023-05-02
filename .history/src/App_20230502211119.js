@@ -9,12 +9,19 @@ const NotFound = lazy(() => import("./components/404"));
 
 const App = () => {
   const [inputValue, setInputValue] = useState("");
+
   // Function to handle changes to the input field
   const handleChanges = (value) => {
     setInputValue(value);
   };
 
+  // Function to handle Go back
+  const handleGoBack = () => {
+    setInputValue("");
+  };
+
   useEffect(() => {
+    handleGoBack()
     //  Redirect user to Screen 1 when they try to access Screen 2 in another tab
     if (window.location.pathname === "/screen-two") {
       window.location.href = "/";
@@ -33,8 +40,8 @@ const App = () => {
                 color: "#57cc99",
                 padding: "20px",
                 backgroundColor: "#282c34",
-                minHeight: "100%",
-                width: "100%",
+                minHeight: "100vh",
+                width: "100vw",
               }}
             >
               Loading...
@@ -47,18 +54,15 @@ const App = () => {
               element={
                 <Screen1
                   inputValue={inputValue}
-                  setInputValue={setInputValue}
                   handleInputChanges={handleChanges}
+                  onGoBack={handleGoBack}
                 />
               }
             />
             <Route
               path="/screen-two"
               element={
-                <Screen2
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
-                />
+                <Screen2 inputValue={inputValue} onGoBack={handleGoBack} />
               }
             />
             <Route path="*" element={<NotFound />} />

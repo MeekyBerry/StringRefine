@@ -9,9 +9,15 @@ const NotFound = lazy(() => import("./components/404"));
 
 const App = () => {
   const [inputValue, setInputValue] = useState("");
+
   // Function to handle changes to the input field
   const handleChanges = (value) => {
     setInputValue(value);
+  };
+
+  // Function to handle Go back
+  const handleGoBack = () => {
+    setInputValue("");
   };
 
   useEffect(() => {
@@ -47,18 +53,15 @@ const App = () => {
               element={
                 <Screen1
                   inputValue={inputValue}
-                  setInputValue={setInputValue}
                   handleInputChanges={handleChanges}
+                  setInputValue= {setInputValue}
                 />
               }
             />
             <Route
               path="/screen-two"
               element={
-                <Screen2
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
-                />
+                <Screen2 inputValue={inputValue} onGoBack={handleGoBack} />
               }
             />
             <Route path="*" element={<NotFound />} />

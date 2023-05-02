@@ -1,5 +1,5 @@
 .screenOne {
-  height: 100%;
+  min-height: 100%;
   @include flexColumn;
   color: var(--color--white);
   padding: 10px;

@@ -47,7 +47,7 @@ const App = () => {
               element={
                 <Screen1
                   inputValue={inputValue}
-                  setInputValue={setInputValue}
+                  setInputValue= {setInputValue}
                   handleInputChanges={handleChanges}
                 />
               }
@@ -55,10 +55,7 @@ const App = () => {
             <Route
               path="/screen-two"
               element={
-                <Screen2
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
-                />
+                <Screen2 inputValue={inputValue} setInputValue= {setInputValue} />
               }
             />
             <Route path="*" element={<NotFound />} />

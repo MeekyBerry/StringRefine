@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, SuccessCard } from "./cards";
 
-const Screen2 = ({ inputValue, setInputValue }) => {
-  // Initialize stringChars to an array of characters, got by removing all whitespace and splitting inputValue
+const Screen2 = ({ inputValue, onGoBack }) => {
+  // Initialize stringChars to an array of characters, obtained by removing all whitespace and splitting the inputValue
   const [stringChars, setStringChars] = useState(
     inputValue.replace(/\s/g, "").split("")
   );
-
-  // Object to store the color of each character in the stringChars array
+  
   const [cardColors, setCardColors] = useState({});
 
-  // Generate a random color for each character in the stringChars array
   useEffect(() => {
     const colors = {};
     stringChars.forEach((char) => {
@@ -25,14 +23,13 @@ const Screen2 = ({ inputValue, setInputValue }) => {
     // eslint-disable-next-line
   }, []);
 
-  // Remove the clicked card from the stringChars array
   const handleCardClick = (char, id) => {
     // Filter the stringChars array to remove the clicked card
     let filteredString = stringChars.filter((el, i) => el !== char || i === id);
     setStringChars(filteredString);
   };
 
-  // Object to store the frequency of each character in the stringChars array
+  // An object to store the frequency of each character in the stringChars array
   const charsMap = stringChars.reduce((acc, char) => {
     if (!acc[char]) {
       acc[char] = 1;
@@ -42,7 +39,6 @@ const Screen2 = ({ inputValue, setInputValue }) => {
     return acc;
   }, {});
 
-  // Card component for each character in the stringChars array
   const cards = stringChars.map((char, id) => (
     <Card
       key={id}
@@ -57,10 +53,8 @@ const Screen2 = ({ inputValue, setInputValue }) => {
   const hasDuplicates = Object.values(charsMap).some((count) => count > 1);
 
   const navigate = useNavigate();
-
-  // Navigate to the home page and clear inputValue
   const goBack = () => {
-    setInputValue("");
+    onGoBack();
     navigate("/");
   };
 

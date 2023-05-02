@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Screen1 = ({ inputValue, setInputValue, handleInputChanges }) => {
+const Screen1 = ({ inputValue, handleInputChanges, onGoBack }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
-  // Set inputValue to empty string on page load
-  useEffect(
-    () => {
-      setInputValue("");
-    },
-    // eslint-disable-next-line
-    []
-  );
 
   const handleSubmit = () => {
     // Trim the inputValue to remove whitespace
@@ -22,6 +13,7 @@ const Screen1 = ({ inputValue, setInputValue, handleInputChanges }) => {
       setErrorMessage("Please enter a non-empty value");
       return;
     }
+    onGoBack()
     navigate(`/screen-two`);
   };
 

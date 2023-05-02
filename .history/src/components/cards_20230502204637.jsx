@@ -30,9 +30,9 @@ export const Card = ({ char, count, color, handleClick }) => {
         {char}
       </div>
       {count > 1 ? (
-        <p className="screenTwo__card--count">Duplicates: {count}</p>
+        <p className="screenTwo__card--count">{count}</p>
       ) : (
-        <p className="screenTwo__card--count">No Duplicate</p>
+        <p className="screenTwo__card--count">No Duplicates</p>
       )}
     </div>
   );

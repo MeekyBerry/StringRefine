@@ -5,14 +5,11 @@ const Screen1 = ({ inputValue, setInputValue, handleInputChanges }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  // Set inputValue to empty string on page load
-  useEffect(
-    () => {
+  useEffect(() => {
       setInputValue("");
     },
     // eslint-disable-next-line
-    []
-  );
+    []);
 
   const handleSubmit = () => {
     // Trim the inputValue to remove whitespace

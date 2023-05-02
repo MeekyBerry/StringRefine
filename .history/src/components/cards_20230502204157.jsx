@@ -29,10 +29,9 @@ export const Card = ({ char, count, color, handleClick }) => {
       <div className="screenTwo__card--char" style={cardStyle}>
         {char}
       </div>
-      {count > 1 ? (
-        <p className="screenTwo__card--count">Duplicates: {count}</p>
-      ) : (
-        <p className="screenTwo__card--count">No Duplicate</p>
+      {/* Conditionally  render count greater than 1 */}
+      {count > 1 && (
+          <p className="screenTwo__card--count">Duplicate: {count}</p>
       )}
     </div>
   );
