@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { Card, SuccessCard } from "./cards";
 
 const Screen2 = ({ inputValue, setInputValue }) => {
-  // Initialize stringChars to an array of characters, got by removing all whitespace and splitting inputValue
+  // Remove all white spaces from the input string and convert it to an array
   const [stringChars, setStringChars] = useState(
     inputValue.replace(/\s/g, "").split("")
   );
 
-  // Object to store the color of each character in the stringChars array
+  // State to store the colors of each character
   const [cardColors, setCardColors] = useState({});
 
-  // Generate a random color for each character in the stringChars array
+  // Generate a random color for each character in the string
   useEffect(() => {
     const colors = {};
     stringChars.forEach((char) => {
@@ -25,14 +25,14 @@ const Screen2 = ({ inputValue, setInputValue }) => {
     // eslint-disable-next-line
   }, []);
 
-  // Remove the clicked card from the stringChars array
+  // Handle the click event on a card
   const handleCardClick = (char, id) => {
-    // Filter the stringChars array to remove the clicked card
+    // Filter out the clicked character from the stringChars array
     let filteredString = stringChars.filter((el, i) => el !== char || i === id);
     setStringChars(filteredString);
   };
 
-  // Object to store the frequency of each character in the stringChars array
+  // Create a map of characters and their count in the stringChars array
   const charsMap = stringChars.reduce((acc, char) => {
     if (!acc[char]) {
       acc[char] = 1;
@@ -42,7 +42,7 @@ const Screen2 = ({ inputValue, setInputValue }) => {
     return acc;
   }, {});
 
-  // Card component for each character in the stringChars array
+  // Create an array of Card components
   const cards = stringChars.map((char, id) => (
     <Card
       key={id}
@@ -53,12 +53,11 @@ const Screen2 = ({ inputValue, setInputValue }) => {
     />
   ));
 
-  // Check if the stringChars array has duplicate characters
+  // Check if the string has any duplicates
   const hasDuplicates = Object.values(charsMap).some((count) => count > 1);
 
   const navigate = useNavigate();
 
-  // Navigate to the home page and clear inputValue
   const goBack = () => {
     setInputValue("");
     navigate("/");
@@ -72,7 +71,7 @@ const Screen2 = ({ inputValue, setInputValue }) => {
         <div className="screenTwo__header">
           <div className="screenTwo__header__success">
             <h2 className="screenTwo__header__success--title">
-              Success! No duplicates found in the string
+              Success! No duplicates found in the string.
             </h2>
             <h3 className="screenTwo__header__success--str">
               <span className="screenTwo__header__success--str-original">

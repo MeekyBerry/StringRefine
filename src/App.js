@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { lazy, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes } from "react-router-dom";
+import Load from "./assets/img/Ripple.gif";
 const Screen1 = lazy(() => import("./components/screen-one"));
 const Screen2 = lazy(() => import("./components/screen-two"));
 const ErrorFallback = lazy(() => import("./components/error-fallback"));
@@ -9,7 +10,6 @@ const NotFound = lazy(() => import("./components/404"));
 
 const App = () => {
   const [inputValue, setInputValue] = useState("");
-  // Function to handle changes to the input field
   const handleChanges = (value) => {
     setInputValue(value);
   };
@@ -26,19 +26,26 @@ const App = () => {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense
           fallback={
-            <h1
+            <div
               style={{
-                fontSize: "22px",
-                fontStyle: "italic",
-                color: "#57cc99",
-                padding: "20px",
                 backgroundColor: "#282c34",
-                minHeight: "100%",
+                height: "100vh",
                 width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
               }}
             >
-              Loading...
-            </h1>
+              <img
+                src={Load}
+                alt="Ripple"
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  objectFit: "contain"
+                }}
+              />
+            </div>
           }
         >
           <Routes>

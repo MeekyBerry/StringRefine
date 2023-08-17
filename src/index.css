@@ -1,3 +1,26 @@
+:root {
+  --color--white: #fff;
+  --color--dark: rgba(0, 0, 0, .5);
+  --color--dark-lite: rgba(0, 0, 0, .1);
+  --color--bg: #282c34;
+  --color--gray: #a9a9a9;
+  --color--gray-lite: rgba(255, 255, 255, .5);
+  --color--red: #ff0000;
+  --color--green: #57cc99;
+  --color--green-lite: #80ed99;
+  --box-shadow: inset 2px 2px 2px 0px var(--color--gray-lite), 7px 7px 20px 0px var(--color--dark-lite), 4px 4px 5px 0px var(--color--dark-lite);
+  --font-size--sm: 12px;
+  --font-size--md: 15px;
+  --font-size--lg: 18px;
+  --font-size--xl: 20px;
+  --font-size--xxl: 22px;
+  --font-weight--normal: 400;
+  --font-weight--bold: 700;
+  --font-family--primary: "Montserrat", serif;
+  --font-family--secondary: "Roboto", sans-serif;
+  --font-family--tertiary: "Fira Sans", monospace;
+}
+
 *,
 *::before,
 *::after {
@@ -15,6 +38,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: var(--color--bg);
+  color: var(--color--white);
+  font-family: var(--font-family--primary);
+  min-width:100%;
+  min-height:100%;
 }
 
 code {

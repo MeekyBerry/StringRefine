@@ -1,5 +1,5 @@
 import React from "react";
-import DeleteIcon from "../assets/img/delete-key.png";
+import DeleteIcon from "../assets/img/delete.png";
 
 export const Card = ({ char, count, color, handleClick }) => {
   const cardStyle = {
